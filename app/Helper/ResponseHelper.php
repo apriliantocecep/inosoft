@@ -2,9 +2,11 @@
 
 namespace App\Helper;
 
-class ResponseHelper
+use \Illuminate\Http\JsonResponse;
+
+class ResponseHelper implements \App\Interfaces\ResponseHelperInterface
 {
-    public static function error($data, $status = 200)
+    public static function error($data, $status = 200) :JsonResponse
     {
         return response()->json([
             'error' => true,
@@ -12,7 +14,7 @@ class ResponseHelper
         ], $status);
     }
     
-    public static function ok($data, $status = 200)
+    public static function ok($data, $status = 200) :JsonResponse
     {
         return response()->json([
             'error' => false,

@@ -28,4 +28,9 @@ Route::group([
     // Auth
     Route::get('/profile', [\App\Http\Controllers\API\AuthController::class, 'profile']);
     Route::post('/logout', [\App\Http\Controllers\API\AuthController::class, 'logout']);
+
+    // Kendaraan
+    Route::prefix('kendaraan')->group(function() {
+        Route::post('/', [\App\Http\Controllers\API\KendaraanController::class, 'create']);
+    });
 });
