@@ -18,4 +18,11 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+
+    protected function unauthenticated($request, array $guards)
+    {
+        abort(\App\Helper\ResponseHelper::error([
+            'message' => 'Unauthenticated.'
+        ], 401));
+    }
 }
