@@ -45,6 +45,23 @@ Adjust the application url, if you are using artisan `serve`, use this url
 APP_URL=http://localhost:8000
 ```
 
+### Mail
+
+Register https://mailtrap.io/ for email testing, use your own setting, and put the credential to `.env` file
+
+Example:
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=be140c485cc633
+MAIL_PASSWORD=308d4d977495bf
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=no-reply@inosoft.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 ## Run
 
 Run this application using `serve` or other method (like valet or homestead)

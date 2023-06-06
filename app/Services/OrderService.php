@@ -10,6 +10,7 @@ use App\Repositories\OrderRespository;
 use App\Repositories\KendaraanRepository;
 use App\Models\User;
 use App\Notifications\OrderCreatedNotification;
+use App\Notifications\PaidOrderNotification;
 
 class OrderService implements OrderServiceInterface
 {
@@ -28,17 +29,16 @@ class OrderService implements OrderServiceInterface
 
         $order = $this->repository->create($kendaraan, $user, $request->qty);
 
-        // reduce the stock
+        $resource = new OrderResource($order);
+
+        // check the stock
         try {
-            $this->kendaraanRepository->reduceStock($request->kendaraan_id, $request->qty);
+            $this->kendaraanRepository->checkStock($request->kendaraan_id);
         } catch (\Exception $e) {
             // remove order
-            // due the database transaction not working
             $this->repository->delete($order->id);
             throw new \Exception($e->getMessage(), 1);
         }
-
-        $resource = new OrderResource($order);
 
         return $resource;
     }
@@ -46,5 +46,26 @@ class OrderService implements OrderServiceInterface
     public function notify(OrderResource $order, User $user)
     {
         $user->notify(new OrderCreatedNotification($order));
+    }
+
+    public function paid($id, User $user): OrderResource
+    {
+        $order = $this->repository->paid($id);
+
+        $resource = new OrderResource($order);
+
+        // reduce the stock
+        try {
+            $this->kendaraanRepository->reduceStock($resource->kendaraan_id, $resource->qty);
+        } catch (\Exception $e) {
+            // remove order
+            $this->repository->delete($order->id);
+            throw new \Exception($e->getMessage(), 1);
+        }
+
+        // notify
+        $user->notify(new PaidOrderNotification($resource));
+
+        return $resource;
     }
 }

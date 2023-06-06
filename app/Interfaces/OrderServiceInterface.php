@@ -11,4 +11,5 @@ interface OrderServiceInterface
 {
     public function create(CreateOrderRequest $request, User $user) :OrderResource;
     public function notify(OrderResource $order, User $user);
+    public function paid($id, User $user) :OrderResource;
 }

@@ -8,4 +8,5 @@ use App\Http\Requests\CreateOrderRequest;
 interface OrderControllerInterface
 {
     public function create(CreateOrderRequest $request) :JsonResponse;
+    public function paid($id) :JsonResponse;
 }

@@ -39,4 +39,18 @@ class OrderRespository implements OrderRepositoryInterface
 
         Order::destroy($id);
     }
+
+    public function paid($id): Order
+    {
+        $order = $this->findById($id);
+
+        if ($order->status == 'paid') {
+            throw new \Exception("Order has been paid", 1);
+        }
+
+        $order->status = 'paid';
+        $order->save();
+
+        return $order->fresh();
+    }
 }

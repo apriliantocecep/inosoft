@@ -11,4 +11,5 @@ interface OrderRepositoryInterface
     public function create(Kendaraan $kendaraan, User $user, int $qty) :Order;
     public function findById($id) :Order;
     public function delete($id) :void;
+    public function paid($id) :Order;
 }

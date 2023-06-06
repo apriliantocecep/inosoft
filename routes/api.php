@@ -41,5 +41,6 @@ Route::group([
     // Order
     Route::prefix('order')->group(function() {
         Route::post('/', [\App\Http\Controllers\API\OrderController::class, 'create']);
+        Route::post('/{id}/paid', [\App\Http\Controllers\API\OrderController::class, 'paid']);
     });
 });

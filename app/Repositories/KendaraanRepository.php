@@ -46,12 +46,19 @@ class KendaraanRepository implements \App\Interfaces\KendaraanRepositoryInterfac
     {
         $kendaraan = $this->findById($id);
 
+        $this->checkStock($kendaraan->id);
+
+        $kendaraan->decrement('stok', $qty);
+    }
+
+    public function checkStock($id): void
+    {
+        $kendaraan = $this->findById($id);
+
         $stock = $kendaraan->stok;
 
         if ($stock <= 0) {
             throw new \Exception("Kendaraan out of stock!", 1);
         }
-
-        $kendaraan->decrement('stok', $qty);
     }
 }

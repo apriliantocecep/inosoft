@@ -40,4 +40,27 @@ class OrderController extends Controller implements OrderControllerInterface
             ]);
         }
     }
+
+    public function paid($id): JsonResponse
+    {
+        // DB::beginTransaction();
+
+        try {
+            $user = auth('api')->user();
+
+            $order = $this->service->paid($id, $user);
+
+            // DB::commit();
+            return ResponseHelper::ok([
+                'message' => 'Order has been paid',
+                'order' => $order,
+            ]);
+        } catch (\Exception $e) {
+            // DB::rollBack();
+
+            return ResponseHelper::error([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
 }

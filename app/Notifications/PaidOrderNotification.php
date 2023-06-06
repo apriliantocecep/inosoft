@@ -6,10 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\Order;
 use App\Http\Resources\OrderResource;
 
-class OrderCreatedNotification extends Notification
+class PaidOrderNotification extends Notification
 {
     use Queueable;
 
@@ -44,14 +43,10 @@ class OrderCreatedNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $total = $this->order->qty * $this->order->price;
-
         return (new MailMessage)
                     ->greeting("Hello {$notifiable->name}")
-                    ->line("Order ID: {$this->order->id}")
-                    ->line("Total Price: $total")
-                    ->line('Your order has been placed!')
-                    ->action('Pay', url("/api/order/{$this->order->id}/paid"))
+                    ->line('Your order has been paid.')
+                    ->action('View Order', url('/'))
                     ->line('Thank you for using our application!');
     }
 
