@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class KendaraanResource extends JsonResource
+class OrderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,17 +18,11 @@ class KendaraanResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'nama' => $this->nama,
-            'tahun_keluaran' => $this->tahun_keluaran,
-            'warna' => $this->warna,
-            'harga' => $this->harga,
-            'mesin' => $this->mesin,
-            'tipe_suspensi' => $this->tipe_suspensi,
-            'tipe_transmisi' => $this->tipe_transmisi,
-            'kapasitas_penumpang' => $this->kapasitas_penumpang,
-            'tipe' => $this->tipe,
-            'jenis' => $this->jenis,
-            'stok' => $this->stok,
+            'qty' => $this->qty,
+            'price' => $this->price,
+            'status' => $this->status,
+            'kendaraan' => $this->kendaraan,
+            'user' => $this->user,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
         ];

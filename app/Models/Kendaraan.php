@@ -22,4 +22,9 @@ class Kendaraan extends Model
         'tipe',
         'jenis',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

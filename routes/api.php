@@ -37,4 +37,9 @@ Route::group([
         Route::delete('/{id}', [\App\Http\Controllers\API\KendaraanController::class, 'delete']);
         Route::get('/{id}', [\App\Http\Controllers\API\KendaraanController::class, 'read']);
     });
+
+    // Order
+    Route::prefix('order')->group(function() {
+        Route::post('/', [\App\Http\Controllers\API\OrderController::class, 'create']);
+    });
 });

@@ -11,4 +11,5 @@ interface KendaraanRepositoryInterface
     public function create(array $data) :Kendaraan;
     public function update($id, array $data) :Kendaraan;
     public function delete($id) :void;
+    public function reduceStock($id, int $qty) :void;
 }

@@ -23,7 +23,8 @@ class KendaraanFactory extends Factory
             "tipe_transmisi" => "CVT",
             "kapasitas_penumpang" => "4",
             "tipe" => "Mobilio",
-            "jenis" => "mobil"
+            "jenis" => "mobil",
+            "stok" => 10000,
         ];
     }
 }

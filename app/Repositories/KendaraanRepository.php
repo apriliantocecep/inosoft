@@ -41,4 +41,17 @@ class KendaraanRepository implements \App\Interfaces\KendaraanRepositoryInterfac
 
         Kendaraan::destroy($id);
     }
+
+    public function reduceStock($id, int $qty): void
+    {
+        $kendaraan = $this->findById($id);
+
+        $stock = $kendaraan->stok;
+
+        if ($stock <= 0) {
+            throw new \Exception("Kendaraan out of stock!", 1);
+        }
+
+        $kendaraan->decrement('stok', $qty);
+    }
 }
