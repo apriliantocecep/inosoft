@@ -31,6 +31,10 @@ Route::group([
 
     // Kendaraan
     Route::prefix('kendaraan')->group(function() {
+        Route::get('/', [\App\Http\Controllers\API\KendaraanController::class, 'all']);
         Route::post('/', [\App\Http\Controllers\API\KendaraanController::class, 'create']);
+        Route::put('/{id}', [\App\Http\Controllers\API\KendaraanController::class, 'update']);
+        Route::delete('/{id}', [\App\Http\Controllers\API\KendaraanController::class, 'delete']);
+        Route::get('/{id}', [\App\Http\Controllers\API\KendaraanController::class, 'read']);
     });
 });
