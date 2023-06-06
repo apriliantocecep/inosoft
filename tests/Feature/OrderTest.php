@@ -62,7 +62,7 @@ class OrderTest extends TestCase
      *
      * @return void
      */
-    public function test_order_successfull()
+    public function test_order_has_been_created()
     {
         $user = \App\Models\User::factory()->create();
         $this->actingAs($user, 'api');
@@ -87,6 +87,38 @@ class OrderTest extends TestCase
                     "user",
                     "created_at",
                     "updated_at",
+                ],
+            ]);
+    }
+
+    /**
+     * Tes order paid
+     * 
+     * @return void
+     */
+    public function test_order_has_been_paid()
+    {
+        $user = \App\Models\User::factory()->create();
+        $this->actingAs($user, 'api');
+
+        $order = \App\Models\Order::factory()->create();
+
+        $this->json('POST', "api/order/{$order->id}/paid", [],  ['Accept' => 'application/json'])
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                "error",
+                "data" => [
+                    "message",
+                    "order" => [
+                        "id",
+                        "qty",
+                        "price",
+                        "status",
+                        "kendaraan",
+                        "user",
+                        "created_at",
+                        "updated_at",
+                    ]
                 ],
             ]);
     }
