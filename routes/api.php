@@ -21,3 +21,11 @@ use Illuminate\Support\Facades\Route;
 // Public
 Route::post('/login', [\App\Http\Controllers\API\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\API\AuthController::class, 'register']);
+
+Route::group([
+    'middleware' => 'auth:api',
+], function() {
+    // Auth
+    Route::get('/profile', [\App\Http\Controllers\API\AuthController::class, 'profile']);
+    Route::post('/logout', [\App\Http\Controllers\API\AuthController::class, 'logout']);
+});
