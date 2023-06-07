@@ -43,4 +43,11 @@ Route::group([
         Route::post('/', [\App\Http\Controllers\API\OrderController::class, 'create']);
         Route::post('/{id}/paid', [\App\Http\Controllers\API\OrderController::class, 'paid']);
     });
+
+    // Report
+    Route::prefix('report')->group(function() {
+        Route::get('/stock', [\App\Http\Controllers\API\ReportController::class, 'stock']);
+        Route::get('/order', [\App\Http\Controllers\API\ReportController::class, 'order']);
+        Route::get('/kendaraan/{id}', [\App\Http\Controllers\API\ReportController::class, 'kendaraan']);
+    });
 });
