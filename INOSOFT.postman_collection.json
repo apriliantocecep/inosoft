@@ -1,0 +1,479 @@
+{
+	"info": {
+		"_postman_id": "2a5941fd-4ed0-40ec-bd7b-b2ea8ed19fb6",
+		"name": "INOSOFT",
+		"description": "Developer test description",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2801839"
+	},
+	"item": [
+		{
+			"name": "kendaraan",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"Mobilio\",\n    \"tahun_keluaran\": \"2023\",\n    \"warna\": \"Hitam\",\n    \"harga\": 200000000,\n    \"mesin\": \"Mesin\",\n    \"tipe_suspensi\": \"Manual\",\n    \"tipe_transmisi\": \"CVT\",\n    \"kapasitas_penumpang\": \"4\",\n    \"tipe\": \"Mobilio\",\n    \"jenis\": \"motor\"\n\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/kendaraan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"kendaraan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"Mobilio UPDATED\",\n    \"tahun_keluaran\": \"2023\",\n    \"warna\": \"Hitam\",\n    \"harga\": 200000000,\n    \"mesin\": \"Mesin\",\n    \"tipe_suspensi\": \"Manual\",\n    \"tipe_transmisi\": \"CVT\",\n    \"kapasitas_penumpang\": \"4\",\n    \"tipe\": \"Mobilio\",\n    \"jenis\": \"motor\"\n\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/kendaraan/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"kendaraan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "647ef6a17069b2a0e9026e33"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/kendaraan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"kendaraan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/kendaraan/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"kendaraan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "647ef7024ff5bb1d8e0c78f2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/kendaraan/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"kendaraan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "647ef7024ff5bb1d8e0c78f2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"kendaraan_id\": \"647f2d22063fb3d7060ef14e\",\n    \"qty\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/order",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/order/:id/paid",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"order",
+								":id",
+								"paid"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "647f85cd7069b2a0e9026e3a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "report",
+			"item": [
+				{
+					"name": "stock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/report/stock?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"stock"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "penjualan",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/report/order?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"order"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "penjualan per kendaraan",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/report/kendaraan/:id?page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"kendaraan",
+								":id"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "647f2d22063fb3d7060ef14e"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"johnson.bradley@example.net\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Cecep Aprilianto\",\n    \"email\": \"cecepaprilianto@gmail.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"profile"
+					]
+				},
+				"description": "Getu authenticated user"
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "Sign out of application"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://inosoft.test/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2luZGl0YW1hLnRlc3QvYXBpL2xvZ2luIiwiaWF0IjoxNjg0Nzc5MzU2LCJleHAiOjE2ODQ3ODI5NTYsIm5iZiI6MTY4NDc3OTM1NiwianRpIjoiMXViVU84Qk9jZzF0OXBTYiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.68DVT3VtnaV5ohAKoF0kqXi_lhW0AAOSqZZyOws_PtA",
+			"type": "string"
+		}
+	]
+}
